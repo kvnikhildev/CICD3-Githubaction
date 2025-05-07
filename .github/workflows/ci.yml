@@ -29,7 +29,7 @@ jobs:
         pytest
     - name: vulnerability check
       run: |
-       bandit -r /app
+       bandit -r app
        safety check -r requirements.txt
        
         
