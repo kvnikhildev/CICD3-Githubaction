@@ -23,8 +23,9 @@ jobs:
     - name: Update image tag
       run: |
         cd Deployment
-        sed -i "s|image: .*$|image: $IMAGE_NAME:${{ env.BUILD_TAG }}|" Deployment.yml 
+        cp ../gitops/Deployment/Deployment.templete.yml Deployment.yml
+        sed -i "s|image: .*$|image: $github-action:${{ env.BUILD_TAG }}|" Deployment.yml 
         git config user.name "kvnikhilldev"
         git config user.email "kvnikhill@gmail.com"
-        git commit -am "Update image tag to $IMAGE_NAME:${{ env.BUILD_TAG }}"
+        git commit -am "Update image tag to $github-action :${{ env.BUILD_TAG }}"
         git push origin main
