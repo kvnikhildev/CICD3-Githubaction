@@ -1,4 +1,4 @@
-name: CI/CD - Build, Push, and GitOps Update
+name: Deploy to GitOps Repo 
 
 on:
   push:
@@ -23,7 +23,7 @@ jobs:
     - name: Update image tag
       run: |
 
-        sed -i "s|image: .*$|image: $IMAGE_NAME:${{ env.BUILD_TAG }}|" deployment.yaml
+        sed -i "s|image: .*$|image: $IMAGE_NAME:${{ env.BUILD_TAG }}|" deployment.yml
         git config user.name "kvnikhilldev"
         git config user.email "kvnikhill@gmail.com"
         git commit -am "Update image tag to $IMAGE_NAME:${{ env.BUILD_TAG }}"
