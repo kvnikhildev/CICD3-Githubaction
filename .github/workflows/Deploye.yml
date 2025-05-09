@@ -1,0 +1,30 @@
+name: CI/CD - Build, Push, and GitOps Update
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout source code
+      uses: actions/checkout@v4
+
+
+    - name: Checkout GitOps repo
+      uses: actions/checkout@v4
+      with:
+        repository: kvnikhildev/CICD3-Githubaction
+        token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
+        path: gitops
+
+    - name: Update image tag
+      run: |
+
+        sed -i "s|image: .*$|image: $IMAGE_NAME:${{ env.BUILD_TAG }}|" deployment.yaml
+        git config user.name "kvnikhilldev"
+        git config user.email "kvnikhill@gmail.com"
+        git commit -am "Update image tag to $IMAGE_NAME:${{ env.BUILD_TAG }}"
+        git push
