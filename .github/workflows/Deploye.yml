@@ -18,7 +18,7 @@ jobs:
       with:
         repository: kvnikhildev/CICD3-Githubaction
         token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
-        path: gitops
+        path: Deployment
 
     - name: Update image tag
       run: |
