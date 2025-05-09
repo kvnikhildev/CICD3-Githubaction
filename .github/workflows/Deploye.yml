@@ -18,12 +18,12 @@ jobs:
       with:
         repository: kvnikhildev/CICD3-Githubaction
         token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
-        path: Deployment
+        path: gitops
 
     - name: Update image tag
       run: |
-        cp Deployment/Deployment.templete.yml Deployment.yml
-        sed -i "s|image: .*$|image: github-action:${{ env.BUILD_TAG }}|" /Deployment/Deployment.yml
+        cp gitops/Deployment/Deployment.template.yml gitops/Deployment/Deployment.yml
+        sed -i "s|image: .*$|image: github-action:${{ env.BUILD_TAG }}|" gitops/Deployment/Deployment.yml
         git config user.name "kvnikhilldev"
         git config user.email "kvnikhill@gmail.com"
         git commit -am "Update image tag to $github-action :${{ env.BUILD_TAG }}"
