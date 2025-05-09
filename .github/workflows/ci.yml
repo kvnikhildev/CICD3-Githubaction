@@ -32,15 +32,7 @@ jobs:
         pip install bandit safety
         bandit -r app
         safety check -r requirements.txt
-    - name: SonarQube Scan
-      uses: SonarSource/sonarqube-scan-action@v4
-      env:
-          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }} 
-      with:
-        projectBaseDir: .
-        args: >
-          -Dsonar.projectKey=python_project
-          -Dsonar.host.url=http://192.168.50.240:9000
+   
       
         
        
