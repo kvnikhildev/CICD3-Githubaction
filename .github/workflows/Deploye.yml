@@ -27,4 +27,4 @@ jobs:
         git config user.name "kvnikhilldev"
         git config user.email "kvnikhill@gmail.com"
         git commit -am "Update image tag to $IMAGE_NAME:${{ env.BUILD_TAG }}"
-        git push
+        git push origin main
