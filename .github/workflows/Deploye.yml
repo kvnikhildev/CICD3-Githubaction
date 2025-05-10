@@ -22,6 +22,7 @@ jobs:
 
     - name: Update image tag
       run: |
+        ls
         cp gitops/Deployment/Deployment.template.yml gitops/Deployment/Deployment.yml
         sed -i "s|image: .*$|image: github-action:${{ env.BUILD_TAG }}|" gitops/Deployment/Deployment.yml
         git config user.name "kvnikhilldev"
