@@ -25,7 +25,7 @@ jobs:
     - name: Update image tag
       run: |
         cp Deployment/Deployment.template.yml Deployment/Deployment.yml
-        run: echo "Build tag is $BUILD_TAG"
+        echo "Build tag is $BUILD_TAG"
         sed -i "s|image: .*|image: github-action:${{ env.BUILD_TAG }}|" Deployment/Deployment.yml
     
         git config user.name "kvnikhilldev"
