@@ -32,4 +32,4 @@ jobs:
         git config user.email "kvnikhill@gmail.com"
         git add Deployment/Deployment.yml
         git commit -m "Update image tag to github-action:${{ env.BUILD_TAG }}"
-        git push origin main
+        
