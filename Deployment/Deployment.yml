@@ -14,6 +14,6 @@ spec:
     spec:
       containers:
         - name: flask
-          image: github-action:build-39
+          image: github-action:build-40
           ports:
             - containerPort: 5000
